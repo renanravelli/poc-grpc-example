@@ -1,0 +1,23 @@
+syntax = "proto3";
+option java_multiple_files = true;
+package me.renanravelli.pocgrpc.server;
+
+message UserRequest {
+  string username = 1;
+}
+
+message UserResponse {
+  UUID id = 1;
+  string username = 2;
+  string password = 3;
+}
+
+message UUID {
+  string value = 1;
+}
+
+service UserService {
+  rpc register(UserRequest) returns (UserResponse){};
+  rpc find(UUID) returns (UserResponse){};
+}
+
